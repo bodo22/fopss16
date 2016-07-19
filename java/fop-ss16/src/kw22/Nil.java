@@ -7,4 +7,9 @@ public class Nil<A> implements List<A> {
 		return "Nil []";
 	}
 
+
+	@Override
+	public <R> R receive(Visitor<A, R> v) {
+		return v.nil();
+	}
 }

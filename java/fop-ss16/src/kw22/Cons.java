@@ -11,4 +11,9 @@ public class Cons<A> implements List<A> {
 	public String toString() {
 		return "Cons [head=" + head + ", tail=" + tail + "]";
 	}
+
+	@Override
+	public <R> R receive(Visitor<A, R> v) {
+		return v.cons(head, tail.receive(v));
+	}
 }

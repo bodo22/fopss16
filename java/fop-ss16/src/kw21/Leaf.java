@@ -14,7 +14,7 @@ public class Leaf<K> implements Tree<K> {
 
 	@Override
 	public int leaves() {
-		return 1;
+		return 0;
 	}
 
 	@Override
