@@ -2,8 +2,7 @@ package kw22.FabrikMuster;
 
 public class A implements I {
 
-    private A() {
-    }
+    private A() {}
 
     static I make() {
         return new A();

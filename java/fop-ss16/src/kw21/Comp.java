@@ -4,7 +4,7 @@ public class Comp {
 
 	public static void main(String[] args) {
 		Tree<Integer> t = new Branch<>(
-				new Leaf<>(2),new Branch<>(new Branch<>(new Leaf<>(1), new Leaf<>(2)), new Leaf<>(5)));
+				new Leaf<>(2),new Branch<>(new Branch<>(new Leaf<>(8), new Leaf<>(2)), new Leaf<>(5)));
 
 		System.out.println(t);
 
@@ -21,6 +21,33 @@ public class Comp {
 				return x + y;
 			}
 		}));
+
+        // summe schlüssel
+        System.out.println(t.receive(new Tree.Visitor<Integer, Integer>() {
+
+            @Override
+            public Integer leaf(Integer integer) {
+                return integer;
+            }
+
+            @Override
+            public Integer branch(Integer x, Integer y) {
+                return x + y;
+            }
+        }));
+
+        //größter schlüssel
+        System.out.println(t.receive(new Tree.Visitor<Integer, Integer>() {
+            @Override
+            public Integer leaf(Integer integer) {
+                return integer;
+            }
+
+            @Override
+            public Integer branch(Integer x, Integer y) {
+               return x > y ? x : y;
+            }
+        }));
 
 		// maximale tiefe
 		System.out.println(t.receive(new Tree.Visitor<Integer, Integer>() {
@@ -55,24 +82,26 @@ public class Comp {
 			}
 		}));
 
-		/*Tree<Boolean> bool = new Branch<>(
-				new Leaf<>(true),new Branch<>(new Branch<>(new Leaf<>(true), new Leaf<>(false)), new Leaf<>(true)));
+		Tree<Boolean> booltree = new Branch<>(
+				new Leaf<>(true),new Branch<>(new Branch<>(new Leaf<>(true), new Leaf<>(true)), new Leaf<>(true)));
 
-		System.out.println(bool);
+		System.out.println(booltree);
 
-		System.out.println(bool.receive(new Tree.Visitor<Integer, Boolean>() {
+
+		//and
+		System.out.println(booltree.receive(new Tree.Visitor<Boolean, Boolean>() {
 
 
 			@Override
-			public Integer leaf(Integer integer) {
-				return null;
+			public Boolean leaf(Boolean k) {
+				return k;
 			}
 
 			@Override
 			public Boolean branch(Boolean x, Boolean y) {
 				return x && y;
 			}
-		}));*/
+		}));
 	}
 
 }

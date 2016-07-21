@@ -3,7 +3,7 @@ package kw22;
 public class Main {
 
 	public static void main(String[] args) {
-		List<Integer> xs = new Cons<Integer>(8,new Cons<>(2, new Nil<>()));
+		List<Integer> xs = new Cons<>(8,new Cons<>(2, new Nil<>()));
 		System.out.println(xs);
 
 
